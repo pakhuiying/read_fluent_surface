@@ -61,41 +61,6 @@ class FluentPoints:
         plt.show()
         return
 
-
-# def plot_points(df,show_plot=True,exclude_plane = None):
-#     """
-#     This function plots a scatter plot using a plane and colours by the sand volume fraction
-#     it automatically excludes the plane that exhibits 0 std so that no manual specification is required
-#     df (pd dataframe): df from import_ascii
-#     exclude_plane (str): x,y or z that corresponds to the column name
-#     """
-#     df_describe = df.describe()
-#     std_plane = df_describe.loc["std",:]
-#     axis = std_plane[std_plane==0.0] #zero std for a surface means that particular plane is being excluded
-#     axis = axis.index.values[0]
-#     if axis == 'x' or axis == 'y' or axis == 'z':
-#     # convert x,y coordinates to points on a mesh
-#         df = df.drop(["nodenumber",axis],axis=1,inplace=False)
-#     elif exclude_plane is not None:
-#         df = df.drop(["nodenumber",exclude_plane],axis=1,inplace=False)
-#     else: 
-#         raise ValueError('Plane excluded is neither x,y nor z. Specify the exclude_plane argument')
-
-#     # df['sand'] = df['sand']*255
-#     # print(df['sand'].dtype)
-#     s1 = df.iloc[:,0].values
-#     s2 = df.iloc[:,1].values
-#     c = df['sand'].values
-#     if show_plot is True:
-#         plt.figure()
-#         # plt.plot(x[::10],y[::10],'o')
-#         plt.scatter(s1,s2,c=c,marker='.')
-#         n1,n2 = df.iloc[:,:2].columns
-#         plt.xlabel(n1)
-#         plt.ylabel(n2)
-#         plt.show()
-#     return s1,s2,c
-
 def grid(s1,s2,c, res1=1000, res2=1000):
     """
     This function interpolates scatter points with irregular grid size to a grid (matrix)
